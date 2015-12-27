@@ -1,0 +1,9 @@
+Y:\Code\StudentPicker\StudentPicker\bin\Debug\StudentPicker.exe.config
+Y:\Code\StudentPicker\StudentPicker\bin\Debug\StudentPicker.exe
+Y:\Code\StudentPicker\StudentPicker\bin\Debug\StudentPicker.pdb
+Y:\Code\StudentPicker\StudentPicker\obj\Debug\StudentPicker.csprojResolveAssemblyReference.cache
+Y:\Code\StudentPicker\StudentPicker\obj\Debug\StudentPicker.Form1.resources
+Y:\Code\StudentPicker\StudentPicker\obj\Debug\StudentPicker.Properties.Resources.resources
+Y:\Code\StudentPicker\StudentPicker\obj\Debug\StudentPicker.csproj.GenerateResource.Cache
+Y:\Code\StudentPicker\StudentPicker\obj\Debug\StudentPicker.exe
+Y:\Code\StudentPicker\StudentPicker\obj\Debug\StudentPicker.pdb
