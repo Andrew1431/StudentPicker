@@ -51,6 +51,9 @@ namespace StudentPicker
                     unselected.Add(s);
                 }
             });
+
+            lstUnselected.DataSource = unselected;
+            lstSelected.DataSource = selected;
         }
         private void Clear()
         {
