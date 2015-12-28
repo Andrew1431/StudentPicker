@@ -51,6 +51,14 @@ namespace StudentPicker
             this.weight = weight;
             selected = false;
         }
+
+        public Student(String fn, String ln, int weight, bool isSelected)
+        {
+            firstName = fn;
+            lastName = ln;
+            this.weight = weight;
+            this.selected = isSelected;
+        }
         public override string ToString()
         {
             return firstName + " " + lastName;

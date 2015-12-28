@@ -30,9 +30,10 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newClassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadClassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveClassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.grade9ClassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.grade10ClassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.grade11ClassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.grade12ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lstUnselected = new System.Windows.Forms.ListBox();
             this.lstSelected = new System.Windows.Forms.ListBox();
@@ -47,6 +48,7 @@
             this.trackEntries = new System.Windows.Forms.TrackBar();
             this.lblEntries = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
+            this.lblHeader = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackEntries)).BeginInit();
             this.SuspendLayout();
@@ -65,36 +67,47 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newClassToolStripMenuItem,
-            this.loadClassToolStripMenuItem,
-            this.saveClassToolStripMenuItem,
+            this.grade9ClassToolStripMenuItem,
+            this.grade10ClassToolStripMenuItem,
+            this.grade11ClassToolStripMenuItem,
+            this.grade12ToolStripMenuItem,
             this.quitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(56, 34);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // newClassToolStripMenuItem
+            // grade9ClassToolStripMenuItem
             // 
-            this.newClassToolStripMenuItem.Name = "newClassToolStripMenuItem";
-            this.newClassToolStripMenuItem.Size = new System.Drawing.Size(203, 34);
-            this.newClassToolStripMenuItem.Text = "New Class";
+            this.grade9ClassToolStripMenuItem.Name = "grade9ClassToolStripMenuItem";
+            this.grade9ClassToolStripMenuItem.Size = new System.Drawing.Size(240, 34);
+            this.grade9ClassToolStripMenuItem.Text = "Grade 9";
+            this.grade9ClassToolStripMenuItem.Click += new System.EventHandler(this.newClassToolStripMenuItem_Click);
             // 
-            // loadClassToolStripMenuItem
+            // grade10ClassToolStripMenuItem
             // 
-            this.loadClassToolStripMenuItem.Name = "loadClassToolStripMenuItem";
-            this.loadClassToolStripMenuItem.Size = new System.Drawing.Size(203, 34);
-            this.loadClassToolStripMenuItem.Text = "Load Class";
+            this.grade10ClassToolStripMenuItem.Name = "grade10ClassToolStripMenuItem";
+            this.grade10ClassToolStripMenuItem.Size = new System.Drawing.Size(240, 34);
+            this.grade10ClassToolStripMenuItem.Text = "Grade 10";
+            this.grade10ClassToolStripMenuItem.Click += new System.EventHandler(this.grade10ClassToolStripMenuItem_Click);
             // 
-            // saveClassToolStripMenuItem
+            // grade11ClassToolStripMenuItem
             // 
-            this.saveClassToolStripMenuItem.Name = "saveClassToolStripMenuItem";
-            this.saveClassToolStripMenuItem.Size = new System.Drawing.Size(203, 34);
-            this.saveClassToolStripMenuItem.Text = "Save Class";
+            this.grade11ClassToolStripMenuItem.Name = "grade11ClassToolStripMenuItem";
+            this.grade11ClassToolStripMenuItem.Size = new System.Drawing.Size(240, 34);
+            this.grade11ClassToolStripMenuItem.Text = "Grade 11";
+            this.grade11ClassToolStripMenuItem.Click += new System.EventHandler(this.grade11ClassToolStripMenuItem_Click);
+            // 
+            // grade12ToolStripMenuItem
+            // 
+            this.grade12ToolStripMenuItem.Name = "grade12ToolStripMenuItem";
+            this.grade12ToolStripMenuItem.Size = new System.Drawing.Size(240, 34);
+            this.grade12ToolStripMenuItem.Text = "Grade 12";
+            this.grade12ToolStripMenuItem.Click += new System.EventHandler(this.grade12ToolStripMenuItem_Click);
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(203, 34);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(240, 34);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -118,7 +131,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(328, 89);
+            this.btnSave.Location = new System.Drawing.Point(328, 107);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(276, 45);
             this.btnSave.TabIndex = 3;
@@ -128,18 +141,19 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(610, 89);
+            this.btnDelete.Location = new System.Drawing.Point(610, 107);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(265, 45);
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(324, 212);
+            this.label1.Location = new System.Drawing.Point(324, 230);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(131, 29);
             this.label1.TabIndex = 5;
@@ -149,7 +163,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(604, 212);
+            this.label2.Location = new System.Drawing.Point(604, 230);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(128, 29);
             this.label2.TabIndex = 6;
@@ -158,7 +172,7 @@
             // txtFirst
             // 
             this.txtFirst.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFirst.Location = new System.Drawing.Point(329, 264);
+            this.txtFirst.Location = new System.Drawing.Point(329, 282);
             this.txtFirst.Name = "txtFirst";
             this.txtFirst.Size = new System.Drawing.Size(275, 34);
             this.txtFirst.TabIndex = 7;
@@ -166,7 +180,7 @@
             // txtLast
             // 
             this.txtLast.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLast.Location = new System.Drawing.Point(610, 264);
+            this.txtLast.Location = new System.Drawing.Point(610, 282);
             this.txtLast.Name = "txtLast";
             this.txtLast.Size = new System.Drawing.Size(265, 34);
             this.txtLast.TabIndex = 8;
@@ -194,7 +208,7 @@
             // trackEntries
             // 
             this.trackEntries.LargeChange = 1;
-            this.trackEntries.Location = new System.Drawing.Point(318, 356);
+            this.trackEntries.Location = new System.Drawing.Point(318, 374);
             this.trackEntries.Maximum = 5;
             this.trackEntries.Minimum = 1;
             this.trackEntries.Name = "trackEntries";
@@ -207,7 +221,7 @@
             // 
             this.lblEntries.AutoSize = true;
             this.lblEntries.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEntries.Location = new System.Drawing.Point(324, 312);
+            this.lblEntries.Location = new System.Drawing.Point(324, 330);
             this.lblEntries.Name = "lblEntries";
             this.lblEntries.Size = new System.Drawing.Size(113, 29);
             this.lblEntries.TabIndex = 12;
@@ -215,7 +229,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(329, 144);
+            this.btnClear.Location = new System.Drawing.Point(329, 162);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(545, 43);
             this.btnClear.TabIndex = 13;
@@ -223,11 +237,22 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // lblHeader
+            // 
+            this.lblHeader.AutoSize = true;
+            this.lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeader.Location = new System.Drawing.Point(323, 51);
+            this.lblHeader.Name = "lblHeader";
+            this.lblHeader.Size = new System.Drawing.Size(211, 35);
+            this.lblHeader.TabIndex = 14;
+            this.lblHeader.Text = "Grade 9 Class";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1176, 651);
+            this.Controls.Add(this.lblHeader);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.lblEntries);
             this.Controls.Add(this.trackEntries);
@@ -257,10 +282,10 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newClassToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem loadClassToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem grade9ClassToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem grade10ClassToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveClassToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem grade11ClassToolStripMenuItem;
         private System.Windows.Forms.ListBox lstUnselected;
         private System.Windows.Forms.ListBox lstSelected;
         private System.Windows.Forms.Button btnSave;
@@ -274,6 +299,8 @@
         private System.Windows.Forms.TrackBar trackEntries;
         private System.Windows.Forms.Label lblEntries;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.ToolStripMenuItem grade12ToolStripMenuItem;
+        private System.Windows.Forms.Label lblHeader;
     }
 }
 
