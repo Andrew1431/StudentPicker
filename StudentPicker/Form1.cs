@@ -17,6 +17,7 @@ namespace StudentPicker
         List<Student> selected, unselected;
         Student current;
         int selectedGrade;
+        private static Random rng = new Random(); 
         public Form1()
         {
             InitializeComponent();
@@ -221,6 +222,41 @@ namespace StudentPicker
         {
             selectedGrade = 3;
             lblHeader.Text = "Grade 12 Class";
+            UpdateLists();
+            Clear();
+        }
+
+        private void shuffleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int orig = selectedGrade;
+            string[] results = new string[4];
+            for (int i = 0; i < 4; i++)
+            {
+                selectedGrade = i;
+                UpdateLists();
+
+                int n = selected.Count;
+                while (n > 1)
+                {
+                    n--;
+                    int k = rng.Next(n + 1);
+                    Student value = selected[k];
+                    selected[k] = selected[n];
+                    selected[n] = value;
+                }
+
+                try
+                {
+                    results[i] = selected[0].FirstName + " " + selected[0].LastName;
+                }
+                catch (Exception ex)
+                {
+                    results[i] = "No students.";
+                }
+            }
+
+            MessageBox.Show(String.Format("Grade 9: {0}\nGrade 10: {1}\nGrade 11: {2}\nGrade 12: {3}\n", results[0], results[1], results[2], results[3]));
+            selectedGrade = orig;
             UpdateLists();
             Clear();
         }

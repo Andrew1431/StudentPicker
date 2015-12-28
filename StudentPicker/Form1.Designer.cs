@@ -49,6 +49,7 @@
             this.lblEntries = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
             this.lblHeader = new System.Windows.Forms.Label();
+            this.shuffleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackEntries)).BeginInit();
             this.SuspendLayout();
@@ -57,7 +58,8 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.shuffleToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1176, 38);
@@ -247,6 +249,13 @@
             this.lblHeader.TabIndex = 14;
             this.lblHeader.Text = "Grade 9 Class";
             // 
+            // shuffleToolStripMenuItem
+            // 
+            this.shuffleToolStripMenuItem.Name = "shuffleToolStripMenuItem";
+            this.shuffleToolStripMenuItem.Size = new System.Drawing.Size(96, 34);
+            this.shuffleToolStripMenuItem.Text = "Shuffle!";
+            this.shuffleToolStripMenuItem.Click += new System.EventHandler(this.shuffleToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -301,6 +310,7 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.ToolStripMenuItem grade12ToolStripMenuItem;
         private System.Windows.Forms.Label lblHeader;
+        private System.Windows.Forms.ToolStripMenuItem shuffleToolStripMenuItem;
     }
 }
 
