@@ -43,11 +43,12 @@
             this.txtFirst = new System.Windows.Forms.TextBox();
             this.txtLast = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.label3 = new System.Windows.Forms.Label();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.trackEntries = new System.Windows.Forms.TrackBar();
+            this.lblEntries = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackEntries)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -57,7 +58,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1283, 40);
+            this.menuStrip1.Size = new System.Drawing.Size(1176, 38);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -69,55 +70,57 @@
             this.saveClassToolStripMenuItem,
             this.quitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(64, 36);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(56, 34);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // newClassToolStripMenuItem
             // 
             this.newClassToolStripMenuItem.Name = "newClassToolStripMenuItem";
-            this.newClassToolStripMenuItem.Size = new System.Drawing.Size(226, 38);
+            this.newClassToolStripMenuItem.Size = new System.Drawing.Size(203, 34);
             this.newClassToolStripMenuItem.Text = "New Class";
             // 
             // loadClassToolStripMenuItem
             // 
             this.loadClassToolStripMenuItem.Name = "loadClassToolStripMenuItem";
-            this.loadClassToolStripMenuItem.Size = new System.Drawing.Size(226, 38);
+            this.loadClassToolStripMenuItem.Size = new System.Drawing.Size(203, 34);
             this.loadClassToolStripMenuItem.Text = "Load Class";
             // 
             // saveClassToolStripMenuItem
             // 
             this.saveClassToolStripMenuItem.Name = "saveClassToolStripMenuItem";
-            this.saveClassToolStripMenuItem.Size = new System.Drawing.Size(226, 38);
+            this.saveClassToolStripMenuItem.Size = new System.Drawing.Size(203, 34);
             this.saveClassToolStripMenuItem.Text = "Save Class";
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(226, 38);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(203, 34);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
             // lstUnselected
             // 
-            this.lstUnselected.ItemHeight = 25;
-            this.lstUnselected.Location = new System.Drawing.Point(12, 80);
+            this.lstUnselected.ItemHeight = 24;
+            this.lstUnselected.Location = new System.Drawing.Point(11, 77);
             this.lstUnselected.Name = "lstUnselected";
-            this.lstUnselected.Size = new System.Drawing.Size(329, 579);
+            this.lstUnselected.Size = new System.Drawing.Size(302, 556);
             this.lstUnselected.TabIndex = 1;
+            this.lstUnselected.SelectedIndexChanged += new System.EventHandler(this.lstUnselected_SelectedIndexChanged);
             // 
             // lstSelected
             // 
-            this.lstSelected.ItemHeight = 25;
-            this.lstSelected.Location = new System.Drawing.Point(960, 80);
+            this.lstSelected.ItemHeight = 24;
+            this.lstSelected.Location = new System.Drawing.Point(880, 77);
             this.lstSelected.Name = "lstSelected";
-            this.lstSelected.Size = new System.Drawing.Size(311, 579);
+            this.lstSelected.Size = new System.Drawing.Size(285, 556);
             this.lstSelected.TabIndex = 2;
+            this.lstSelected.SelectedIndexChanged += new System.EventHandler(this.lstSelected_SelectedIndexChanged);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(358, 93);
+            this.btnSave.Location = new System.Drawing.Point(328, 89);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(301, 47);
+            this.btnSave.Size = new System.Drawing.Size(276, 45);
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -125,9 +128,9 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(665, 93);
+            this.btnDelete.Location = new System.Drawing.Point(610, 89);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(289, 47);
+            this.btnDelete.Size = new System.Drawing.Size(265, 45);
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -136,9 +139,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(353, 164);
+            this.label1.Location = new System.Drawing.Point(324, 212);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(147, 31);
+            this.label1.Size = new System.Drawing.Size(131, 29);
             this.label1.TabIndex = 5;
             this.label1.Text = "First Name";
             // 
@@ -146,74 +149,89 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(659, 164);
+            this.label2.Location = new System.Drawing.Point(604, 212);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(145, 31);
+            this.label2.Size = new System.Drawing.Size(128, 29);
             this.label2.TabIndex = 6;
             this.label2.Text = "Last Name";
             // 
             // txtFirst
             // 
             this.txtFirst.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFirst.Location = new System.Drawing.Point(359, 218);
+            this.txtFirst.Location = new System.Drawing.Point(329, 264);
             this.txtFirst.Name = "txtFirst";
-            this.txtFirst.Size = new System.Drawing.Size(300, 38);
+            this.txtFirst.Size = new System.Drawing.Size(275, 34);
             this.txtFirst.TabIndex = 7;
             // 
             // txtLast
             // 
             this.txtLast.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLast.Location = new System.Drawing.Point(665, 218);
+            this.txtLast.Location = new System.Drawing.Point(610, 264);
             this.txtLast.Name = "txtLast";
-            this.txtLast.Size = new System.Drawing.Size(289, 38);
+            this.txtLast.Size = new System.Drawing.Size(265, 34);
             this.txtLast.TabIndex = 8;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(615, 426);
+            this.btnAdd.Location = new System.Drawing.Point(564, 464);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(98, 80);
+            this.btnAdd.Size = new System.Drawing.Size(90, 77);
             this.btnAdd.TabIndex = 9;
             this.btnAdd.Text = ">>";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // button3
+            // btnRemove
             // 
-            this.button3.Location = new System.Drawing.Point(615, 512);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(98, 80);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "<<";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnRemove.Location = new System.Drawing.Point(564, 547);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(90, 77);
+            this.btnRemove.TabIndex = 10;
+            this.btnRemove.Text = "<<";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
-            // trackBar1
+            // trackEntries
             // 
-            this.trackBar1.Location = new System.Drawing.Point(347, 314);
-            this.trackBar1.Maximum = 5;
-            this.trackBar1.Minimum = 1;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(595, 90);
-            this.trackBar1.TabIndex = 11;
-            this.trackBar1.Value = 1;
+            this.trackEntries.LargeChange = 1;
+            this.trackEntries.Location = new System.Drawing.Point(318, 356);
+            this.trackEntries.Maximum = 5;
+            this.trackEntries.Minimum = 1;
+            this.trackEntries.Name = "trackEntries";
+            this.trackEntries.Size = new System.Drawing.Size(545, 80);
+            this.trackEntries.TabIndex = 11;
+            this.trackEntries.Value = 1;
+            this.trackEntries.ValueChanged += new System.EventHandler(this.trackEntries_ValueChanged);
             // 
-            // label3
+            // lblEntries
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(353, 268);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(129, 31);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Entries: 1";
+            this.lblEntries.AutoSize = true;
+            this.lblEntries.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEntries.Location = new System.Drawing.Point(324, 312);
+            this.lblEntries.Name = "lblEntries";
+            this.lblEntries.Size = new System.Drawing.Size(113, 29);
+            this.lblEntries.TabIndex = 12;
+            this.lblEntries.Text = "Entries: 1";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(329, 144);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(545, 43);
+            this.btnClear.TabIndex = 13;
+            this.btnClear.Text = "Clear Selected";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1283, 678);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.trackBar1);
-            this.Controls.Add(this.button3);
+            this.ClientSize = new System.Drawing.Size(1176, 651);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.lblEntries);
+            this.Controls.Add(this.trackEntries);
+            this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtLast);
             this.Controls.Add(this.txtFirst);
@@ -229,7 +247,7 @@
             this.Text = "Form1";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackEntries)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -252,9 +270,10 @@
         private System.Windows.Forms.TextBox txtFirst;
         private System.Windows.Forms.TextBox txtLast;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.TrackBar trackEntries;
+        private System.Windows.Forms.Label lblEntries;
+        private System.Windows.Forms.Button btnClear;
     }
 }
 

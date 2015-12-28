@@ -9,7 +9,19 @@ namespace StudentPicker
     class Student
     {
         private String firstName, lastName;
-        private float weight;
+
+        public String LastName
+        {
+            get { return lastName; }
+            set { lastName = value; }
+        }
+
+        public String FirstName
+        {
+            get { return firstName; }
+            set { firstName = value; }
+        }
+        private int weight;
         private bool selected;
 
         public bool IsSelected
@@ -20,7 +32,7 @@ namespace StudentPicker
         public void Select() { selected = true; }
         public void Deselect() { selected = false; }
 
-        public float Weight
+        public int Weight
         {
             get
             {
@@ -32,11 +44,11 @@ namespace StudentPicker
             }
         }
 
-        public Student(String fn, String ln)
+        public Student(String fn, String ln, int weight)
         {
             firstName = fn;
             lastName = ln;
-            weight = 1f;
+            this.weight = weight;
             selected = false;
         }
         public override string ToString()

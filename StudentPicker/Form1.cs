@@ -20,8 +20,6 @@ namespace StudentPicker
             group = new List<Student>();
             selected = new List<Student>();
             unselected = new List<Student>();
-            lstSelected.DataSource = selected;
-            lstUnselected.DataSource = unselected;
         }
 
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -31,20 +29,34 @@ namespace StudentPicker
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            group.Add(new Student(txtFirst.Text, txtLast.Text));
-            UpdateLists();
-            Clear();
+            if (current != null)
+            {
+                group.Remove(current);
+                group.Add(new Student(txtFirst.Text, txtLast.Text, trackEntries.Value));
+                UpdateLists();
+                Clear();
+            }
+            else
+            {
+                group.Add(new Student(txtFirst.Text, txtLast.Text, trackEntries.Value));
+                UpdateLists();
+                Clear();
+            }
         }
 
         private void UpdateLists()
         {
             selected.Clear();
             unselected.Clear();
+            group = group.OrderBy(p => p.FirstName).ToList();
             group.ForEach(s =>
             {
                 if (s.IsSelected)
                 {
-                    selected.Add(s);
+                    for (int i = 0; i < s.Weight; i++)
+                    {
+                        selected.Add(s);
+                    }
                 }
                 else
                 {
@@ -52,13 +64,73 @@ namespace StudentPicker
                 }
             });
 
-            lstUnselected.DataSource = unselected;
-            lstSelected.DataSource = selected;
+            lstSelected.DataSource = selected.ToArray();
+            lstUnselected.DataSource = unselected.ToArray();
         }
         private void Clear()
         {
+            current = null;
             txtFirst.Text = "";
             txtLast.Text = "";
+            trackEntries.Value = 1;
+        }
+
+        private void updateFields()
+        {
+            txtFirst.Text = current.FirstName;
+            txtLast.Text = current.LastName;
+            trackEntries.Value = current.Weight;
+        }
+
+        private void lstUnselected_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListBox b = (ListBox)sender;
+            current = unselected[b.SelectedIndex];
+
+            updateFields();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (current != null)
+            {
+                current.Select();
+                current.Weight = trackEntries.Value;
+
+                UpdateLists();
+                Clear();
+            }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (current != null)
+            {
+                current.Deselect();
+                current.Weight = trackEntries.Value;
+
+                UpdateLists();
+                Clear();
+            }
+        }
+
+        private void lstSelected_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListBox b = (ListBox)sender;
+            current = selected[b.SelectedIndex];
+
+            updateFields();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            UpdateLists();
+            Clear();
+        }
+
+        private void trackEntries_ValueChanged(object sender, EventArgs e)
+        {
+            lblEntries.Text = String.Format("Entries: {0}", trackEntries.Value);
         }
     }
 }
